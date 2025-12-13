@@ -99,7 +99,7 @@ function makePageForEpisodes(episodeList) {
     if (episode.image && episode.image.medium) {
       const img = document.createElement("img");
       img.className = "episode-img";
-      img.src = episode.image.medium;
+      img.src = episode.image.medium.replace("http://", "https://"); // Forced https for better score in lighthouse
       img.alt = episode.name + "image";
       episodeDiv.appendChild(img);
     }
