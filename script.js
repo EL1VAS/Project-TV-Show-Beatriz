@@ -22,7 +22,7 @@ function setup() {
   allEpisodes = getAllEpisodes();
   // display them on the page
   makePageForEpisodes(allEpisodes);
-  searchText.textContent = `Displaying ${allEpisodes.length} out of ${allEpisodes.length} episodes`;
+  searchText.textContent = `Displaying ${allEpisodes.length} out of ${allEpisodes.length} episodes`; // Displays the text even without something written in the search box
 
   searchBox.addEventListener("input", function () {
     // Making the search active
@@ -47,6 +47,8 @@ function setup() {
 }
 // shows the episodes on the page
 function makePageForEpisodes(episodeList) {
+  const rootElem = document.getElementById("root"); // define it again
+
   // clear anything that might already be in the episodes
   episodesContainer.innerHTML = "";
 
