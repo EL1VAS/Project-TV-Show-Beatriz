@@ -1,5 +1,5 @@
-.episode-container {
-  color: darkgreen; /* All letters */
+.episodes-container {
+  color: rgb(130, 6, 155); /* All letters */
   display: grid; /* Puts cards in a grid */
   grid-template-columns: repeat(
     3,
@@ -7,10 +7,11 @@
   ); /* creates a 3 cards per row that repeats itself */
   gap: 20px; /* gap between cards */
   padding: 20px; /* padding between browser edges and main body */
+  margin-top: 20px;
 }
 
 body {
-  background-color: darkgrey;
+  background-color: rgb(106, 103, 103);
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -37,4 +38,5 @@ body {
 .search-text {
   font-style: italic;
   font-size: smaller;
+  color: aliceblue;
 }
