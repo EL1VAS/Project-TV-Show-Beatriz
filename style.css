@@ -6,3 +6,8 @@ body {
   background-color: darkgrey;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+.input-box {
+  border-radius: 5px;
+  margin-right: 20px;
+}
