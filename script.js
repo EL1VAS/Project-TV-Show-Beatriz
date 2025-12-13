@@ -11,7 +11,7 @@ searchBoxDiv.appendChild(searchBox); // The big box will include the search box
 searchBoxDiv.appendChild(searchText); // and the text next to it
 
 const episodesContainer = document.createElement("div"); // Creates a big container to put all the episodes div inside
-// Added all big containers axcept rootElem in the global scope
+// Added all big containers axcept rootElem in the global scope. They will be executed before the setup on loading
 
 function setup() {
   // find the root element in the HTML
