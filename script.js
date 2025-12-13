@@ -1,8 +1,7 @@
 //You can edit ALL of the code here
 const searchBox = document.createElement("input"); // Created
 searchBox.className = "input-box";
-searchBox.type = "input";
-rootElem.appendChild(searchBox);
+searchBox.type = "text";
 
 // runs when the page loads
 function setup() {
@@ -70,6 +69,7 @@ function makePageForEpisodes(episodeList) {
   credit.textContent = "Data originally from ";
   credit.appendChild(link);
 
+  rootElem.appendChild(searchBox); // Appended the searchBox
   rootElem.appendChild(credit);
 }
 // run setup when page finishes loading
