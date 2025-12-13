@@ -72,6 +72,7 @@ function makePageForEpisodes(episodeList) {
 
     // container for each episode
     const episodeDiv = document.createElement("div");
+    episodeDiv.className = "episode-card";
 
     let season = episode.season;
     let number = episode.number;
@@ -93,6 +94,7 @@ function makePageForEpisodes(episodeList) {
     // show episode image if it exists
     if (episode.image && episode.image.medium) {
       const img = document.createElement("img");
+      img.className = "episode-img";
       img.src = episode.image.medium;
       img.alt = episode.name + "image";
       episodeDiv.appendChild(img);
