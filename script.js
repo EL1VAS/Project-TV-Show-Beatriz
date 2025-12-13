@@ -6,7 +6,6 @@ const searchBox = document.createElement("input"); // Created the box
 searchBox.className = "input-box"; // Use it for styling after
 searchBox.type = "text";
 const searchText = document.createElement("span"); // Text that will appear next to the box
-searchText.textContent = "Displaying episodes x out of y"; // Will adjust the x and y after
 searchBoxDiv.appendChild(searchBox); // The big box will include the search box
 searchBoxDiv.appendChild(searchText); // and the text next to it
 
