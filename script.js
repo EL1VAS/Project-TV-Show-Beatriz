@@ -23,6 +23,27 @@ function setup() {
   allEpisodes = getAllEpisodes();
   // display them on the page
   makePageForEpisodes(allEpisodes);
+
+  searchBox.addEventListener("input", function () {
+    // Making the search active
+    const searchTerm = searchBox.value;
+    if (searchTerm === "") {
+      // If the search box is empty
+      makePageForEpisodes(allEpisodes);
+      searchText.textContent = `Displaying episodes ${allEpisodes.length} out of ${allEpisodes.length}`;
+    } else {
+      const searchTermLower = searchTerm.toLowerCase(); // turns all the input to lower case for better comparison
+      const filteredEpisodes = allEpisodes.filter(function (episode) {
+        const name = episode.name.toLowerCase();
+        const summary = episode.summary.toLowerCase();
+        return (
+          name.includes(searchTermLower) || summary.includes(searchTermLower)
+        );
+      });
+      makePageForEpisodes(filteredEpisodes);
+      searchText.textContent = `Displaying episodes ${filteredEpisodes.length} out of ${allEpisodes.length}`;
+    }
+  });
 }
 // shows the episodes on the page
 function makePageForEpisodes(episodeList) {
