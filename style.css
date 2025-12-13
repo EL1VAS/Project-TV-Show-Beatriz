@@ -1,5 +1,5 @@
 .episodes-container {
-  color: rgb(130, 6, 155); /* All letters */
+  color: rgb(234, 225, 235); /* All letters */
   display: grid; /* Puts cards in a grid */
   grid-template-columns: repeat(
     3,
@@ -11,7 +11,7 @@
 }
 
 body {
-  background-color: rgb(106, 103, 103);
+  background-color: white;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -21,7 +21,7 @@ body {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /*shadow in card */
   border: 4px; /* size of the outline of the box */
   padding: 15px; /* padding inside the card, pushes internal elements to the center */
-  background-color: white; /* color of the card */
+  background-color: black; /* color of the card */
 }
 
 .episode-img {
@@ -33,10 +33,11 @@ body {
 .input-box {
   border-radius: 5px;
   margin-right: 20px;
+  color: black;
 }
 
 .search-text {
   font-style: italic;
   font-size: smaller;
-  color: aliceblue;
+  color: black;
 }
