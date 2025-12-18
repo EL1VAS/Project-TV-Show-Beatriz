@@ -71,7 +71,15 @@ function setup() {
     }
   });
 
-  episodeSelector.addEventListener("change", function () {});
+  episodeSelector.addEventListener("change", function () {
+    const selectedCode = episodeSelector.value;
+    const targetId = "episode-" + selectedCode;
+    const targetElement = document.getElementById(targetId);
+
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: "smooth" });
+    }
+  });
 }
 // shows the episodes on the page
 function makePageForEpisodes(episodeList) {
