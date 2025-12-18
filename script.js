@@ -70,6 +70,8 @@ function setup() {
       searchText.textContent = `Displaying episodes ${filteredEpisodes.length} out of ${allEpisodes.length}`;
     }
   });
+
+  episodeSelector.addEventListener("change", function () {});
 }
 // shows the episodes on the page
 function makePageForEpisodes(episodeList) {
@@ -98,6 +100,7 @@ function makePageForEpisodes(episodeList) {
     }
 
     const episodeCode = "S" + season + "E" + number;
+    episodeDiv.id = "episode-" + episodeCode;
     // show the episode title
     const title = document.createElement("h2");
     title.textContent = episodeCode + " - " + episode.name; // Added a space before and after -
@@ -142,6 +145,7 @@ function populateEpisodeSelector(episodeList) {
 
     const option = document.createElement("option"); // Created an element for all options in the dropdown menu
     option.textContent = episodeCode + " - " + episode.name;
+    option.value = episodeCode; // for better matching with the card after
 
     episodeSelector.appendChild(option); // Append the options to the episodeSelector box
   }
