@@ -118,5 +118,31 @@ function makePageForEpisodes(episodeList) {
     episodesContainer.appendChild(episodeDiv); // Added the episode card to the bigger container of episodes
   }
 }
+
+function populateEpisodeSelector(episodeList) {
+  // Fill episode selector with titles of episodes to choose from
+  for (let i = 0; i < episodeList.length; i++) {
+    // Loop through episodes
+    const episode = episodeList[i]; // for each episode
+
+    let season = episode.season; // Copied code from above to create the episodeCode
+    let number = episode.number;
+
+    // adding 0's if needed
+    if (season < 10) {
+      season = "0" + season;
+    }
+    if (number < 10) {
+      number = "0" + number;
+    }
+
+    const episodeCode = "S" + season + "E" + number;
+
+    const option = document.createElement("option"); // Created an element for all options in the dropdown menu
+    option.textContent = episodeCode + " - " + episode.name;
+
+    episodeSelector.appendChild(option); // Append the options to the episodeSelector box
+  }
+}
 // run setup when page finishes loading
 window.onload = setup;
