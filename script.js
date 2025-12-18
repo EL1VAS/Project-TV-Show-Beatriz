@@ -72,12 +72,13 @@ function setup() {
   });
 
   episodeSelector.addEventListener("change", function () {
-    const selectedCode = episodeSelector.value;
-    const targetId = "episode-" + selectedCode;
-    const targetElement = document.getElementById(targetId);
+    const selectedCode = episodeSelector.value; // S01E01 for example
+    const targetId = "episode-" + selectedCode; // FOrmat to match the id of the episode card
+    const targetElement = document.getElementById(targetId); // The episode card
 
     if (targetElement) {
-      targetElement.scrollIntoView({ behavior: "smooth" });
+      // If the card exists
+      targetElement.scrollIntoView({ behavior: "smooth" }); // "Jump" to it
     }
   });
 }
