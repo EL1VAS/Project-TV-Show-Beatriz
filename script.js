@@ -93,6 +93,13 @@ function setup() {
     }
   });
 }
+
+function formatEpisodeCode(season, number) {
+  const formattedSeason = String(season).padStart(2,"0");
+  const formattedNumber = String(number).padStart(2,"0");
+  return `S${formattedSeason}E${formattedNumber}`;
+}
+
 // shows the episodes on the page
 function makePageForEpisodes(episodeList) {
   //const rootElem = document.getElementById("root"); // define it again
@@ -111,16 +118,16 @@ function makePageForEpisodes(episodeList) {
     let season = episode.season;
     let number = episode.number;
 
-    // adding 0's if needed
+    /* adding 0's if needed
     if (season < 10) {
       season = "0" + season;
     }
     if (number < 10) {
       number = "0" + number;
-    }
+    }*/
 
-    const episodeCode = "S" + season + "E" + number;
-    episodeDiv.id = "episode-" + episodeCode;
+        //const episodeCode = "S" + season + "E" + number;
+        //episodeDiv.id = "episode-" + episodeCode;
     // show the episode title
     const title = document.createElement("h2");
     title.textContent = episodeCode + " - " + episode.name; // Added a space before and after -
@@ -155,15 +162,15 @@ function populateEpisodeSelector(episodeList) {
     let season = episode.season; // Copied code from above to create the episodeCode
     let number = episode.number;
 
-    // adding 0's if needed
+    /* adding 0's if needed
     if (season < 10) {
       season = "0" + season;
     }
     if (number < 10) {
       number = "0" + number;
-    }
+    }*/
 
-    const episodeCode = "S" + season + "E" + number;
+    const episodeCode = formatEpisodeCode(episode.code, episode.number);
 
     const option = document.createElement("option"); // Created an element for all options in the dropdown menu
     option.textContent = episodeCode + " - " + episode.name;
