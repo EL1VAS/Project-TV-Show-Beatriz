@@ -9,9 +9,14 @@ let allEpisodes = []; // Empty array to fill with the retrieved data below
 const navigationDiv = document.createElement("div"); // Altered to create a card to include the episodes menu, search box and the text of episode display
 navigationDiv.className = "navigationDiv";
 
+const showSelector = document.createElement("select"); // Created the show selector
+showSelector.className = "show-selector";
+showSelector.setAttribute("aria-label", "Select a TV show to jump to");
+
 const episodeSelector = document.createElement("select"); // Creates the dropdown menu
 episodeSelector.className = "episode-selector"; // Use it for styling after
-episodeSelector.setAttribute( // added label for better accessibility
+episodeSelector.setAttribute(
+  // added label for better accessibility
   "aria-label",
   "Select an episode to jump to"
 );
@@ -25,7 +30,8 @@ searchBox.setAttribute("placeholder", "Search episodes..."); // Adding a text in
 const searchText = document.createElement("span"); // Text that will appear next to the box
 searchText.className = "search-text";
 
-navigationDiv.appendChild(episodeSelector); // The big box will include the episode selector
+navigationDiv.appendChild(showSelector); // The big box will include first the TV show selector
+navigationDiv.appendChild(episodeSelector); //  the episode selector
 navigationDiv.appendChild(searchBox); //  the search box
 navigationDiv.appendChild(searchText); // and the text next to it
 
@@ -35,13 +41,13 @@ episodesContainer.className = "episodes-container";
 
 function setup() {
   statusMessage.textContent = "Loading episodes...";
- // document.getElementById("root").appendChild(statusMessage);
+  // document.getElementById("root").appendChild(statusMessage);
   // find the root element in the HTML
   // const rootElem = document.getElementById("root");
   rootElem.appendChild(navigationDiv); // Created the structure of the root by appending the searchBoxDiv and
   rootElem.appendChild(episodesContainer); // the episodes container
 
- // get episodes from API
+  // get episodes from API
   fetchEpisodes();
 
   searchText.textContent = `Displaying ${allEpisodes.length} out of ${allEpisodes.length} episodes`; // Displays the text even without something written in the search box
@@ -70,9 +76,7 @@ function setup() {
       const searchTermLower = searchTerm.toLowerCase(); // turns all the input to lower case for better comparison
       const filteredEpisodes = allEpisodes.filter(function (episode) {
         const name = episode.name.toLowerCase();
-        const summary = episode.summary
-        ? episode.summary.toLowerCase()
-        : "";
+        const summary = episode.summary ? episode.summary.toLowerCase() : "";
         return (
           name.includes(searchTermLower) || summary.includes(searchTermLower)
         );
@@ -95,14 +99,14 @@ function setup() {
 }
 
 function formatEpisodeCode(season, number) {
-  const formattedSeason = String(season).padStart(2,"0");
-  const formattedNumber = String(number).padStart(2,"0");
+  const formattedSeason = String(season).padStart(2, "0");
+  const formattedNumber = String(number).padStart(2, "0");
   return `S${formattedSeason}E${formattedNumber}`;
 }
 
 // shows the episodes on the page
 function makePageForEpisodes(episodeList) {
-rootElem.appendChild(statusMessage);
+  rootElem.appendChild(statusMessage);
 
   // clear anything that might already be in the episodes
   episodesContainer.innerHTML = "";
@@ -115,11 +119,11 @@ rootElem.appendChild(statusMessage);
     const episodeDiv = document.createElement("div");
     episodeDiv.className = "episode-card";
 
-const episodeCode = formatEpisodeCode(episode.season, episode.number);
-episodeDiv.id ="episode-" + episodeCode;
+    const episodeCode = formatEpisodeCode(episode.season, episode.number);
+    episodeDiv.id = "episode-" + episodeCode;
 
-        //const episodeCode = "S" + season + "E" + number;
-        // episodeDiv.id = "episode-" + episodeCode;
+    //const episodeCode = "S" + season + "E" + number;
+    // episodeDiv.id = "episode-" + episodeCode;
     // show the episode title
     const title = document.createElement("h2");
     title.textContent = episodeCode + " - " + episode.name; // Added a space before and after -
@@ -163,26 +167,26 @@ function populateEpisodeSelector(episodeList) {
 
 function fetchEpisodes() {
   fetch("https://api.tvmaze.com/shows/82/episodes")
-  .then(function (response) {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then(function (data) {
-    allEpisodes = data;
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      allEpisodes = data;
 
-    statusMessage.remove(); // remove loading message
+      statusMessage.remove(); // remove loading message
 
-    makePageForEpisodes(allEpisodes);
-    populateEpisodeSelector(allEpisodes);
+      makePageForEpisodes(allEpisodes);
+      populateEpisodeSelector(allEpisodes);
 
-    searchText.textContent = `Displaying ${allEpisodes.length} out of ${allEpisodes.length} episodes`;
-  })
-  .catch(function (error) {
-    statusMessage.textContent =
-    "Sorry, something went wrong while loading the episodes.";
-  });
+      searchText.textContent = `Displaying ${allEpisodes.length} out of ${allEpisodes.length} episodes`;
+    })
+    .catch(function (error) {
+      statusMessage.textContent =
+        "Sorry, something went wrong while loading the episodes.";
+    });
 }
 // run setup when page finishes loading
 window.onload = setup;
