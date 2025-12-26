@@ -260,7 +260,7 @@ function fetchEpisodesForShow(showId) {
       if (!response.ok) {
         throw new Error("Network responce was not ok");
       }
-      return response.json;
+      return response.json();
     })
     .then(function (data) {
       episodeCache[showId] = data; // Adding data to the cache
