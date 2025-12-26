@@ -159,6 +159,13 @@ function makePageForEpisodes(episodeList) {
 
 function populateEpisodeSelector(episodeList) {
   // Fill episode selector with titles of episodes to choose from
+  episodeSelector.innerHTML = "";
+
+  const placeholder = document.createElement("option");
+  placeholder.textContent = "Select an episode...";
+  placeholder.value = "";
+  episodeSelector.appendChild(placeholder);
+
   for (let i = 0; i < episodeList.length; i++) {
     // Loop through episodes
     const episode = episodeList[i]; // for each episode
